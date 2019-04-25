@@ -16,12 +16,21 @@
     </head>
   <body>
       <nav>
-       
+        {% if session['username'] %}
+        
           <a href="/">Home</a>
           <a href="/blog">All posts</a>
           <a href="/newpost">New post</a>
-          <a href="/login">Login</a>   
           <a href="/logout">Logout</a>
+        {% else %}
+          <a href="/">Home</a>
+          <a href="/blog">All posts</a>
+          <a href="/newpost">New post</a>
+          <a href="/login">Login</a> 
+          <a href="/logout">Logout</a>
+          
+          
+        {% endif %} 
       </nav>
   </body>
 </html>
