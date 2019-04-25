@@ -1,15 +1,21 @@
 {%extends "base.html" %}
 
 {% block content %}
-<h1><center><strong>Build a Blog</strong></center></h1>
+  <h1>Blog Posts!</h1>
 
-   {% for entry in all_entries %}
-    <h2>
-      <a href="/blog?id={{ entry.id }}">{{ entry.title }}</a>
-    </h2>
-    <p>{{ entry.body }}</p>
-        
-    <hr size="0.5" noshade>
+  {% if all_entries|length == 0 %}
+    <p>No blog posts yet</p>
+
+  {% else %}
+
+    {% for entry in all_entries %}
+      <h2>
+        <a href="/blog?id={{ entry.id }}">{{ entry.title }}</a>
+      </h2>
+      <p>{{ entry.body }}</p>
+      <p>Written by <a href="/blog?user={{ entry.owner_id }}">{{ entry.username }}</a></p>  
+      
     {% endfor %}
+  {% endif %}
 
 {% endblock %}
